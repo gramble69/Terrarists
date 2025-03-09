@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://cgln8efumhs8q"]
+
+[ext_resource type="PackedScene" uid="uid://dkb8idyuppfg6" path="res://train.tscn" id="1_8sbkf"]
+[ext_resource type="PackedScene" uid="uid://coad3sh2mgsyv" path="res://communityAssets/train_station/edited/trainStation.tscn" id="2_825b8"]
+[ext_resource type="PackedScene" uid="uid://cg0e8k5jx4npj" path="res://maps/titleScreens/template/mainMenuTemplate.tscn" id="2_vy2xl"]
+[ext_resource type="Texture2D" uid="uid://cksppvhscdnje" path="res://skyboxes/T_Random_54.png" id="3_xe8r1"]
+[ext_resource type="Material" uid="uid://dj2ujxhqspdfh" path="res://Materials/quantization.tres" id="5_wmxd2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4bk46"]
+sky_top_color = Color(0.645656, 0.705738, 0.789499, 1)
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_curve = 1.0
+sky_energy_multiplier = 0.5
+sky_cover = ExtResource("3_xe8r1")
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_curve = 0.25
+sun_curve = 0.25
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_tgyk6"]
+sky_material = SubResource("ProceduralSkyMaterial_4bk46")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_nnyr6"]
+background_mode = 2
+sky = SubResource("Sky_tgyk6")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hbxlt"]
+material = ExtResource("5_wmxd2")
+size = Vector2(2.5, 1)
+
+[node name="TitleScreen1" type="Node3D"]
+
+[node name="Train1" type="Node3D" parent="."]
+
+[node name="map" type="Node3D" parent="Train1"]
+transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 0, 0)
+
+[node name="train" parent="Train1/map" instance=ExtResource("1_8sbkf")]
+transform = Transform3D(-9.17939e-09, 0, 0.2, 0, 0.2, 0, -0.21, 0, -8.74228e-09, 0.91, 1.86059, -0.1)
+is_in_titlescreen = true
+
+[node name="TrainStation" parent="Train1/map" instance=ExtResource("2_825b8")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Train1"]
+environment = SubResource("Environment_nnyr6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, -0.642788, 33.75, 13.5, -11.25)
+current = true
+
+[node name="MainMenuTemplate" parent="Camera3D" instance=ExtResource("2_vy2xl")]
+
+[node name="Quantizizer" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, -1.02245)
+visible = false
+mesh = SubResource("PlaneMesh_hbxlt")
+skeleton = NodePath("../../../../Map")

@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg0e8k5jx4npj"]
+
+[ext_resource type="Script" uid="uid://k7n0tqcnjpqu" path="res://Scripts/mainMenu/mainMenu.gd" id="1_1bipb"]
+[ext_resource type="FontFile" uid="uid://bpord7tngd6ty" path="res://fonts/trebuc.ttf" id="1_t324b"]
+
+[node name="MainMenuTemplate" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1bipb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.45
+anchor_right = 0.15
+anchor_bottom = 0.45
+offset_left = 0.399979
+offset_top = -0.0400391
+offset_right = 0.399979
+offset_bottom = -0.0400391
+
+[node name="playRegular" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_t324b")
+theme_override_font_sizes/font_size = 100
+text = "play"
+
+[node name="playSandbox" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_t324b")
+theme_override_font_sizes/font_size = 100
+text = "play sandbox"
+
+[connection signal="pressed" from="VBoxContainer/playRegular" to="." method="_on_play_regular_pressed"]
+[connection signal="pressed" from="VBoxContainer/playSandbox" to="." method="_on_play_sandbox_pressed"]

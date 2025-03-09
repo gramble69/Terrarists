@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://c1um06npl0300"
+path="res://.godot/imported/prefabs.map-c9d25dc8b639b661ecd87dd65742f50b.tres"
+
+[deps]
+
+source_file="res://maps/prefabs.map"
+dest_files=["res://.godot/imported/prefabs.map-c9d25dc8b639b661ecd87dd65742f50b.tres"]
+
+[params]
+

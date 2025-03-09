@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://dlve41rr0kork"
+path="res://.godot/imported/trainStation1.2.map-16971d7058ad9a048f43108c5c8d1201.tres"
+
+[deps]
+
+source_file="res://maps/autosave/trainStation1.2.map"
+dest_files=["res://.godot/imported/trainStation1.2.map-16971d7058ad9a048f43108c5c8d1201.tres"]
+
+[params]
+
