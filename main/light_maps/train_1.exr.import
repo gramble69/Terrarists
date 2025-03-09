@@ -1,0 +1,26 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://dcx2a64mgmkfe"
+path="res://.godot/imported/train_1.exr-37a2dcf1a74f667b7d7c00e69864bbb6.ctexarray"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://light_maps/train_1.exr"
+dest_files=["res://.godot/imported/train_1.exr-37a2dcf1a74f667b7d7c00e69864bbb6.ctexarray"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

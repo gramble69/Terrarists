@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://68p3o1l2chiy"]
+
+[ext_resource type="Texture2D" uid="uid://b43qphy35efc1" path="res://material/silverMetal.jpg" id="1_4p0cr"]
+
+[resource]
+albedo_color = Color(0.521141, 0.521141, 0.521141, 1)
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("1_4p0cr")
+roughness_texture = ExtResource("1_4p0cr")
+normal_enabled = true
