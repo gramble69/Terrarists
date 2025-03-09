@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2awqjkpy8x3k"]
+
+[ext_resource type="Texture2D" uid="uid://c4342gfmxr7v8" path="res://material/apartment.jpg" id="1_73lux"]
+
+[resource]
+albedo_texture = ExtResource("1_73lux")
+metallic_specular = 0.0
+texture_filter = 2

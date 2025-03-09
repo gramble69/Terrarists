@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2yyd7iqbv2m3"]
+
+[ext_resource type="Texture2D" uid="uid://b2bxoehuvuktj" path="res://material/gravel.JPG" id="1_g3ug2"]
+
+[resource]
+albedo_texture = ExtResource("1_g3ug2")
+metallic_specular = 0.0
+texture_filter = 2
