@@ -1,0 +1,264 @@
+[gd_scene load_steps=21 format=3 uid="uid://cb61ca1bw0i0d"]
+
+[ext_resource type="Script" uid="uid://bg8e6ty5swcr2" path="res://Scripts/Player.gd" id="1_7dds3"]
+[ext_resource type="Script" uid="uid://b1yap8mi3ce4e" path="res://Scripts/hitscan.gd" id="2_yi6jf"]
+[ext_resource type="PackedScene" uid="uid://gen7rwti58ad" path="res://Scenes/9mm_hangun/9mm_handgun_inventory.tscn" id="3_u8ojb"]
+[ext_resource type="Texture2D" uid="uid://dnn5o63qe6mi4" path="res://Crosshair-PNG-Picture.png" id="4_12qb5"]
+[ext_resource type="FontFile" uid="uid://bpord7tngd6ty" path="res://fonts/trebuc.ttf" id="5_kthdm"]
+[ext_resource type="PackedScene" uid="uid://ereoj1rvnm27" path="res://Scenes/pauseMenu/pauseMenu.tscn" id="6_0n0k8"]
+[ext_resource type="PackedScene" uid="uid://cmedcbffhrt0x" path="res://Scenes/player/gasMask/gasMask.tscn" id="7_8b4gk"]
+[ext_resource type="AudioStream" uid="uid://j84a6liwarg5" path="res://sound/sfx/ouch.ogg" id="8_3jkfm"]
+[ext_resource type="Material" uid="uid://ca412dqonmf1t" path="res://Materials/sobelEffect.tres" id="9_n1x3k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5axu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xc2g5"]
+material = SubResource("StandardMaterial3D_y5axu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_i0ivx"]
+font = ExtResource("5_kthdm")
+font_size = 100
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fpxrt"]
+font = ExtResource("5_kthdm")
+font_size = 100
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ntpc"]
+font = ExtResource("5_kthdm")
+font_size = 100
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xxxpe"]
+material = ExtResource("9_n1x3k")
+size = Vector3(2, 2, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wydro"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4qcd4"]
+
+[sub_resource type="Animation" id="Animation_wrevx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playerCollision:shape:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tjnta"]
+resource_name = "crouch"
+length = 0.26
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playerCollision:shape:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xhif0"]
+_data = {
+&"RESET": SubResource("Animation_wrevx"),
+&"crouch": SubResource("Animation_tjnta")
+}
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_7dds3")
+WALK_SPEED = 10.0
+SPRINT_SPEED = 16.0
+JUMP_VELOCITY = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_xc2g5")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+fov = 90.0
+script = ExtResource("2_yi6jf")
+
+[node name="gunholder" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.5, -0.25, -1.59339)
+
+[node name="handgun" parent="Head/Camera3D/gunholder" instance=ExtResource("3_u8ojb")]
+transform = Transform3D(-0.25, 0, 6.33795e-07, 0, 0.25, 0, -6.33795e-07, 0, -0.25, 0, 0, 0)
+
+[node name="magazineLabel" type="Label" parent="Head/Camera3D"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -265.0
+offset_top = -117.0
+offset_right = -155.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "18"
+label_settings = SubResource("LabelSettings_i0ivx")
+
+[node name="pistolAmmoLabel" type="Label" parent="Head/Camera3D"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -117.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "36"
+label_settings = SubResource("LabelSettings_fpxrt")
+
+[node name="spareAmmoSeperater" type="Label" parent="Head/Camera3D"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -120.0
+offset_right = -108.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "/"
+label_settings = SubResource("LabelSettings_1ntpc")
+
+[node name="TextureRect" type="TextureRect" parent="Head/Camera3D"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -155.0
+offset_right = 465.0
+offset_bottom = 465.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_12qb5")
+
+[node name="PauseMenu" parent="Head/Camera3D" instance=ExtResource("6_0n0k8")]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Head/Camera3D"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Head/Camera3D/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("5_kthdm")
+theme_override_font_sizes/font_size = 50
+text = "the gasmask is"
+
+[node name="gasMaskLabel" type="Label" parent="Head/Camera3D/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("5_kthdm")
+theme_override_font_sizes/font_size = 200
+text = "off"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Head/Camera3D"]
+process_physics_priority = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("BoxMesh_xxxpe")
+
+[node name="GasMask" parent="Head/Camera3D" instance=ExtResource("7_8b4gk")]
+transform = Transform3D(-6, 0, 4.37114e-07, 0, 5, 0, -5.24537e-07, 0, -5, 0, -1, 0.81828)
+
+[node name="playerCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_wydro")
+
+[node name="player_area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_4qcd4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xhif0")
+}
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+current = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AudioListener3D"]
+stream = ExtResource("8_3jkfm")
+
+[connection signal="currentCameraTrue" from="." to="Head/Camera3D" method="_on_player_current_camera_true"]
+[connection signal="gasMaskIsOff" from="Head/Camera3D" to="." method="_on_camera_3d_gas_mask_is_off"]
+[connection signal="gasMaskIsOn" from="Head/Camera3D" to="." method="_on_camera_3d_gas_mask_is_on"]
