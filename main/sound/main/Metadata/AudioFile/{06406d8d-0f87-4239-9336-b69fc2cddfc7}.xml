@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{06406d8d-0f87-4239-9336-b69fc2cddfc7}">
+		<property name="assetPath">
+			<value>pistol_shot.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.1755102040816328</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{71b47e90-0301-48ec-aa3b-ee600aeb18e0}</destination>
+		</relationship>
+	</object>
+</objects>
