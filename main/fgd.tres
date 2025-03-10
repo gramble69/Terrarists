@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=2 format=3 uid="uid://ymy8dusoxdb3"]
+
+[ext_resource type="Script" uid="uid://c86idxniutean" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="1_txdxh"]
+
+[resource]
+script = ExtResource("1_txdxh")
+export_file = false
+target_map_editor = 1
+fgd_name = "terrarists"
+base_fgd_files = Array[Resource]([null])
+entity_definitions = Array[Resource]([])
