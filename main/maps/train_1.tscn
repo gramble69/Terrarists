@@ -30,9 +30,11 @@ size = Vector3(1.85666, 0.459442, 0.025)
 background_mode = 2
 sky = ExtResource("3_n48fu")
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_emission_energy = 0.0
+volumetric_fog_density = 0.025
+volumetric_fog_albedo = Color(1, 1, 0.607843, 1)
+volumetric_fog_emission = Color(0.697108, 0.697131, 0.67952, 1)
 volumetric_fog_gi_inject = 0.0
+volumetric_fog_anisotropy = 0.75
 volumetric_fog_length = 1024.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_uixbb"]
@@ -3707,7 +3709,8 @@ _data = {
 script = ExtResource("4_ibr26")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, 0, 0, 0)
+transform = Transform3D(-1, 3.90806e-08, -1.45851e-07, 0, 0.965926, 0.258819, 1.50996e-07, 0.258819, -0.965926, 0, 0, 0)
+light_indirect_energy = 0.5
 light_bake_mode = 1
 shadow_enabled = true
 
