@@ -10,7 +10,7 @@ albedo_texture = ExtResource("1_ouwce")
 emission_enabled = true
 emission_energy_multiplier = 0.0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yhfwx"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ouwce"]
 _surfaces = [{
 "aabb": AABB(-4, -3.4641, 0, 8, 6.9282, 100),
 "format": 34359742465,
@@ -42,7 +42,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/f//P9izXcAAAMhC////P9izXUAAAAAAAACAQAAAAAAAAAAA/f//P9izXcAAAAAAAQAAwNezXUAAAAAAAACAwC69u7QAAAAA/f//P9izXcAAAMhC/f//v9izXcAAAAAA/f//P9izXcAAAAAA////P9izXUAAAMhCAQAAwNezXUAAAMhCAACAQAAAAAAAAMhCAACAwC69u7QAAMhC/f//v9izXcAAAMhCAACAwC69u7QAAMhCAQAAwNezXUAAAMhC////P9izXUAAAMhC/f//P9izXcAAAMhC/f//v9izXcAAAMhCAACAQAAAAAAAAMhC2a7ZLh4AGoDZriXR4P8ZgP7//3/B/wCA2a7ZLh4AGoAlUSXR4P/k/wAA/387AP//2a7ZLh0AGIAlUdkuHQDl/9mu2S4dABiA2a4l0eD/GYAlUSXR4P/k//7//389AACAAAD/f8L///8lUdkuHQDl//9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgA==")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_yhfwx")
+shadow_mesh = SubResource("ArrayMesh_ouwce")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_opwan"]
 resource_name = "Material #40"
@@ -52,7 +52,7 @@ albedo_texture = ExtResource("1_ouwce")
 emission_enabled = true
 emission_energy_multiplier = 0.0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_d3hqk"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_p22un"]
 _surfaces = [{
 "aabb": AABB(-3.8147e-06, 2.34225, -1.36557, 66.2786, 102.997, 5.48914),
 "format": 34359742465,
@@ -104,18 +104,16 @@ _surfaces = [{
 "vertex_data": PackedByteArray("cI+BQuDNdUD47x22MPFWQODNdUD67x22MPFWQG+uz0L77x22cI+BQm+uz0L+7x22cI+BQm+uz0IyTIS2MPFWQG+uz0IxTIS2MPFWQODNdUBQHk21cI+BQuDNdUBKHk21/3//f////7//f/9/////v/9//3////+//3//f////7///wAAAAD/v///AAAAAP+///8AAAAA/7///wAAAAD/vw==")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_d3hqk")
+shadow_mesh = SubResource("ArrayMesh_p22un")
 
-[node name="FenceGate" type="Node3D"]
+[node name="FENCE" type="Node3D"]
 
-[node name="FENCE" type="Node3D" parent="."]
-
-[node name="FENCEMETALTUBE" type="MeshInstance3D" parent="FENCE"]
-transform = Transform3D(0.01, 0, 0, 0, 0, 0.01, 0, -0.01, 0, -0.57849, 0, 0.40031)
+[node name="FENCEMETALTUBE" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0, 0.01, 0, -0.01, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ulsep")
 skeleton = NodePath("")
 
-[node name="DOORMETAL" type="MeshInstance3D" parent="FENCE"]
-transform = Transform3D(0.00926872, 0, 0, 0, 0.00926872, -4.05149e-10, 0, 4.05149e-10, 0.00926872, -0.572692, -2.42647e-24, 0.40031)
+[node name="DOORMETAL" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.00926872, 0, 0, 0, 0.00926872, -4.05149e-10, 0, 4.05149e-10, 0.00926872, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yflci")
 skeleton = NodePath("")

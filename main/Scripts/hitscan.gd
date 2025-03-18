@@ -30,10 +30,11 @@ func getCameraCollision():
 	var intersection = get_world_3d().direct_space_state.intersect_ray(newIntersection)
 	if not intersection.is_empty():
 		print(intersection.collider.name)
-		if intersection.collider.name == "enemy" :
+		if intersection.collider.name == "enemy" && handgun.isBiengHeld == true:
 			intersection.collider.health = intersection.collider.health - 25
-		else:
-			print("nothing")
+		if intersection.collider.name == "door":
+			print("door")
+			intersection.collider
 	else:
 		print("nothing")
 func gasMaskToggle():

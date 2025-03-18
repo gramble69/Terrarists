@@ -1,4 +1,4 @@
-[gd_scene load_steps=1767 format=4 uid="uid://56od2ujjabcw"]
+[gd_scene load_steps=1770 format=4 uid="uid://56od2ujjabcw"]
 
 [ext_resource type="PackedScene" uid="uid://dkb8idyuppfg6" path="res://train.tscn" id="1_7sb30"]
 [ext_resource type="PackedScene" uid="uid://coad3sh2mgsyv" path="res://communityAssets/train_station/edited/trainStation.tscn" id="2_hs67r"]
@@ -5460,6 +5460,41 @@ _data = {
 &"wakeUp": SubResource("Animation_pukyv")
 }
 
+[sub_resource type="Animation" id="Animation_fq0t2"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../door:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7qlsd"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uat4"]
+_data = {
+&"RESET": SubResource("Animation_7qlsd"),
+&"open": SubResource("Animation_fq0t2")
+}
+
 [node name="Train1" type="Node3D"]
 script = ExtResource("4_ibr26")
 
@@ -5481,55 +5516,55 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.175, 1.725, -13.515)
 [node name="TrainStation" parent="map" instance=ExtResource("2_hs67r")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
-[node name="Fence2" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence2" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 2.075, -0.6)
 
-[node name="Fence6" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence6" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.81725, -0.0128722, 1.2281)
 
-[node name="Fence7" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence7" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.81725, -0.0128722, 0.271338)
 
-[node name="Fence8" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence8" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.81725, -0.0128722, -0.709762)
 
-[node name="Fence9" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence9" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.27042, -0.112408, 2.36817)
 
-[node name="Fence14" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence14" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.065, -0.115, 2.315)
 
-[node name="Fence15" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence15" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.065, -0.115, 3.27775)
 
-[node name="Fence16" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence16" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.065, -0.115, 4.21765)
 
-[node name="Fence17" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence17" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.065, -0.115, 5.1651)
 
-[node name="Fence18" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence18" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.065, -0.115, 6.68725)
 
-[node name="Fence10" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence10" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.27042, -0.112408, 3.33727)
 
-[node name="Fence11" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence11" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.27042, -0.112408, 4.3051)
 
-[node name="Fence12" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence12" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.27042, -0.112408, 6.62469)
 
-[node name="Fence13" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence13" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.27042, -0.112408, 5.688)
 
-[node name="Fence3" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence3" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.47, 2.075, -0.6)
 
-[node name="Fence4" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence4" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.95, 2.075, -0.6)
 
-[node name="Fence5" parent="map" instance=ExtResource("3_ci620")]
+[node name="Fence5" type="Node3D" parent="map" instance=ExtResource("3_ci620")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.425, 2.075, -0.6)
 
 [node name="stopJumpingOff" type="Area3D" parent="map"]
@@ -10827,14 +10862,21 @@ WALK_SPEED = 5.0
 SPRINT_SPEED = 8.0
 JUMP_VELOCITY = 5.0
 
-[node name="mapEvents" type="AnimationPlayer" parent="."]
+[node name="door" parent="." instance=ExtResource("17_fq0t2")]
+transform = Transform3D(3, 0, 0, 0, 2.5, 0, 0, 0, 3, 12.1, 0.525, 64.5)
+
+[node name="mapEvent1" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_dmhyy")
 }
 script = ExtResource("12_wu6q4")
 
-[node name="FenceGate" parent="." instance=ExtResource("17_fq0t2")]
-transform = Transform3D(3, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 13.8499, 0.525862, 63.457)
+[node name="doorOpenAndClose2" type="Node" parent="."]
+
+[node name="openAndCloser" type="AnimationPlayer" parent="doorOpenAndClose2"]
+libraries = {
+&"": SubResource("AnimationLibrary_6uat4")
+}
 
 [connection signal="canOpenDoors" from="." to="map/train" method="_on_train_1_can_open_doors"]
-[connection signal="animation_finished" from="mapEvents" to="." method="_on_map_events_animation_finished"]
+[connection signal="animation_finished" from="mapEvent1" to="." method="_on_map_events_animation_finished"]
