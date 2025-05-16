@@ -5,7 +5,7 @@ signal canOpenDoors
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	anim
+	anim.play("wakeUp")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
