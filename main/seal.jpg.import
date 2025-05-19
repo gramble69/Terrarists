@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg5xs54rvjrau"
-path.s3tc="res://.godot/imported/black-fine-leather-textured-background.jpg-a8f8eb62dd892545ce73e6805fd0760c.s3tc.ctex"
+uid="uid://3ytv3dmmaeil"
+path.s3tc="res://.godot/imported/seal.jpg-65566d0c31dee4069efb3bca8d38ec95.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://material/black-fine-leather-textured-background.jpg"
-dest_files=["res://.godot/imported/black-fine-leather-textured-background.jpg-a8f8eb62dd892545ce73e6805fd0760c.s3tc.ctex"]
+source_file="res://seal.jpg"
+dest_files=["res://.godot/imported/seal.jpg-65566d0c31dee4069efb3bca8d38ec95.s3tc.ctex"]
 
 [params]
 

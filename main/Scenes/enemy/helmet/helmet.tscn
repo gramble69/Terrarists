@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bje5kx32631pn"]
+
+[ext_resource type="PackedScene" uid="uid://tpnobtnol56j" path="res://Scenes/enemy/helmet/helmet.blend" id="1_lf0rk"]
+
+[node name="Helmet" type="Node3D"]
+
+[node name="helmet" parent="." instance=ExtResource("1_lf0rk")]
