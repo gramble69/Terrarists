@@ -1,4 +1,4 @@
-[gd_scene load_steps=2349 format=4 uid="uid://56od2ujjabcw"]
+[gd_scene load_steps=2351 format=4 uid="uid://56od2ujjabcw"]
 
 [ext_resource type="PackedScene" uid="uid://dkb8idyuppfg6" path="res://train.tscn" id="1_7sb30"]
 [ext_resource type="PackedScene" uid="uid://coad3sh2mgsyv" path="res://communityAssets/train_station/edited/trainStation.tscn" id="2_hs67r"]
@@ -19,6 +19,8 @@
 [ext_resource type="Material" uid="uid://b2awqjkpy8x3k" path="res://material/apartment.tres" id="14_7qlsd"]
 [ext_resource type="VoxelGIData" uid="uid://dnte6gvvwm5kb" path="res://light_maps/train_1Lightmap.tres" id="17_7qlsd"]
 [ext_resource type="PackedScene" uid="uid://qndnryxtj0an" path="res://communityAssets/wireFence/better/fenceGate.tscn" id="17_fq0t2"]
+[ext_resource type="NavigationMesh" uid="uid://btdgexhko24ya" path="res://pathfindingMaps/train_1.tres" id="20_wr01w"]
+[ext_resource type="PackedScene" uid="uid://bihvnghsar34x" path="res://Scenes/enemy/cop1.tscn" id="21_4cwjs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0on7"]
 size = Vector3(12.5, 0.5, 0.01)
@@ -14372,6 +14374,19 @@ libraries = {
 subdiv = 2
 size = Vector3(400, 50, 250)
 data = ExtResource("17_7qlsd")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = ExtResource("20_wr01w")
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="NavigationRegion3D"]
+visible = false
+mesh = SubResource("ArrayMesh_6uat4")
+skeleton = NodePath("../../VoxelGI")
+
+[node name="enemies" type="Node3D" parent="."]
+
+[node name="Cop1" parent="enemies" instance=ExtResource("21_4cwjs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 77)
 
 [connection signal="canOpenDoors" from="." to="map/train" method="_on_train_1_can_open_doors"]
 [connection signal="animation_finished" from="mapEvent1" to="." method="_on_map_events_animation_finished"]
