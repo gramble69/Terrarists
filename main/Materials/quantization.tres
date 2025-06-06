@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dj2ujxhqspdfh"]
 
-[ext_resource type="Shader" path="res://shaders/quantization.gdshader" id="1_tek80"]
+[ext_resource type="Shader" uid="uid://0holajh0l3xn" path="res://shaders/quantization.gdshader" id="1_tek80"]
 
 [resource]
 render_priority = 0
