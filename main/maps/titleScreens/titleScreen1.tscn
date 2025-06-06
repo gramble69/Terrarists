@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgln8efumhs8q"]
+[gd_scene load_steps=12 format=3 uid="uid://cgln8efumhs8q"]
 
 [ext_resource type="PackedScene" uid="uid://dkb8idyuppfg6" path="res://train.tscn" id="1_8sbkf"]
+[ext_resource type="Script" uid="uid://bgyf3wl8wm1bf" path="res://Scripts/titleScreenAudio.gd" id="1_baw72"]
 [ext_resource type="PackedScene" uid="uid://coad3sh2mgsyv" path="res://communityAssets/train_station/edited/trainStation.tscn" id="2_825b8"]
 [ext_resource type="PackedScene" uid="uid://cg0e8k5jx4npj" path="res://maps/titleScreens/template/mainMenuTemplate.tscn" id="2_vy2xl"]
 [ext_resource type="Texture2D" uid="uid://cksppvhscdnje" path="res://skyboxes/T_Random_54.png" id="3_xe8r1"]
 [ext_resource type="Material" uid="uid://dj2ujxhqspdfh" path="res://Materials/quantization.tres" id="5_wmxd2"]
+[ext_resource type="AudioStream" uid="uid://cjo6lxk364uf0" path="res://sound/music/TerraristsMainTheme.mp3" id="7_hvd41"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4bk46"]
 sky_top_color = Color(0.645656, 0.705738, 0.789499, 1)
@@ -32,6 +34,7 @@ material = ExtResource("5_wmxd2")
 size = Vector2(2.5, 1)
 
 [node name="TitleScreen1" type="Node3D"]
+script = ExtResource("1_baw72")
 
 [node name="Train1" type="Node3D" parent="."]
 
@@ -59,3 +62,13 @@ transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 
 visible = false
 mesh = SubResource("PlaneMesh_hbxlt")
 skeleton = NodePath("../../../../Map")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+current = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69712, 0)
+stream = ExtResource("7_hvd41")
+bus = &"titleScreen1"
+doppler_tracking = 2
+parameters/looping = true
