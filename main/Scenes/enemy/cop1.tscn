@@ -41,5 +41,3 @@ shape = SubResource("SphereShape3D_pfsvy")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(2, 0, 0, 0, 0.75, 0, 0, 0, 1, 0, 1.7134, 0)
 shape = SubResource("ConvexPolygonShape3D_pfsvy")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]

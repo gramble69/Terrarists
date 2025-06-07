@@ -19,10 +19,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	magazineAmmo > -1
-	#if Engine.time_scale == 1:
-		#canShoot = true
-	#if Engine.time_scale == 0:
-		#canShoot = false
+	if Engine.time_scale == 1:
+		canShoot = true
+	if Engine.time_scale == 0:
+		canShoot = false
 	if (isBiengHeld == false):
 		visible = false
 		canShoot = false

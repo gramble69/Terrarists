@@ -12,7 +12,7 @@ func _ready() -> void:
 	gasMask.visible = false
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("shoot") && Engine.time_scale == 1 && handgun.magazineAmmo > 0:
+	if Input.is_action_just_pressed("shoot") && Engine.time_scale == 1:
 		getCameraCollision()
 	if Input.is_action_just_pressed("toggleGasMaskOn"):
 		gasMaskLabel.text = "on"
@@ -30,11 +30,13 @@ func getCameraCollision():
 	var intersection = get_world_3d().direct_space_state.intersect_ray(newIntersection)
 	if not intersection.is_empty():
 		print(intersection.collider.name)
-		if intersection.collider.name == "enemy" && handgun.isBiengHeld == true:
+		if intersection.collider.name == "enemy" && handgun.canShoot == true && handgun.isBiengHeld == true:
 			intersection.collider.health = intersection.collider.health - 25
 		if intersection.collider.name == "door":
-			print("door")
-			intersection.collider
+			if intersection.collider.opened == true:
+				intersection.collider.opened == false
+			if intersection.collider.opened == false:
+				intersection.collider.opened == true
 	else:
 		print("nothing")
 func gasMaskToggle():
