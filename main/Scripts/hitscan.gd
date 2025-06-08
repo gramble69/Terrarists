@@ -33,10 +33,7 @@ func getCameraCollision():
 		if intersection.collider.name == "enemy" && handgun.canShoot == true && handgun.isBiengHeld == true:
 			intersection.collider.health = intersection.collider.health - 25
 		if intersection.collider.name == "door":
-			if intersection.collider.opened == true:
-				intersection.collider.opened == false
-			if intersection.collider.opened == false:
-				intersection.collider.opened == true
+			intersection.collider.toggleOpen()
 	else:
 		print("nothing")
 func gasMaskToggle():
