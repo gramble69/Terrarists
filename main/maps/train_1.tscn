@@ -7421,8 +7421,8 @@ transform = Transform3D(0.22, 0, 0, 0, -9.61651e-09, -0.22, 0, 0.22, -9.61651e-0
 size = Vector3(1, 5.82, 5.155)
 material = SubResource("StandardMaterial3D_wr01w")
 
-[node name="FENCE" parent="map" instance=ExtResource("17_fq0t2")]
-transform = Transform3D(0.65, 0, 0, 0, 0.525, 0, 0, 0, 0.75, 2.63541, 0.125, 14.365)
+[node name="fenceGate" parent="map" instance=ExtResource("17_fq0t2")]
+transform = Transform3D(-0.675, 0, -1.13247e-07, 0, 0.55, 0, 1.01922e-07, 0, -0.75, 3.1, 0.125, 14.365)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gwi7c")
