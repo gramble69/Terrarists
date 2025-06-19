@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bihvnghsar34x"]
+[gd_scene load_steps=7 format=3 uid="uid://bihvnghsar34x"]
 
 [ext_resource type="PackedScene" uid="uid://cmedcbffhrt0x" path="res://Scenes/player/gasMask/gasMask.tscn" id="1_4e1ol"]
 [ext_resource type="PackedScene" uid="uid://bje5kx32631pn" path="res://Scenes/enemy/helmet/helmet.tscn" id="2_pfsvy"]
@@ -10,6 +10,10 @@ heightmap_scale = 16.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xvoek"]
 material = SubResource("StandardMaterial3D_pfsvy")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pfsvy"]
+height = 3.5
+radius = 1.15
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pfsvy"]
 
@@ -31,6 +35,10 @@ transform = Transform3D(6, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.5, 0)
 [node name="Helmet" parent="CharacterBody3D/GasMask" instance=ExtResource("2_pfsvy")]
 transform = Transform3D(0.166667, 0, 0, 0, 0.171613, 0.102708, 0, -0.102708, 0.171613, 0, 0.27, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("CylinderShape3D_pfsvy")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2.575, 0.245)
 shape = SubResource("SphereShape3D_pfsvy")

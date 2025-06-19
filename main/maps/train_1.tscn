@@ -1,4 +1,4 @@
-[gd_scene load_steps=2359 format=4 uid="uid://56od2ujjabcw"]
+[gd_scene load_steps=2360 format=4 uid="uid://56od2ujjabcw"]
 
 [ext_resource type="PackedScene" uid="uid://dkb8idyuppfg6" path="res://train.tscn" id="1_7sb30"]
 [ext_resource type="PackedScene" uid="uid://coad3sh2mgsyv" path="res://communityAssets/train_station/edited/trainStation.tscn" id="2_hs67r"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cb61ca1bw0i0d" path="res://Scenes/player/player.tscn" id="6_y1mkr"]
 [ext_resource type="Script" uid="uid://c02nl5td7w4a7" path="res://addons/func_godot/src/map/func_godot_map.gd" id="7_vs5ex"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="8_kjk7v"]
+[ext_resource type="PackedScene" uid="uid://j22fn4a0ehft" path="res://Scenes/oldElectricHangingLantern/oldElectricHangingLantern.tscn" id="8_lixah"]
 [ext_resource type="Material" uid="uid://uqjaj2arp1i1" path="res://material/gunmetal.tres" id="9_lefoa"]
 [ext_resource type="Material" uid="uid://h6iexif07p8o" path="res://material/concrete.tres" id="10_5q5q4"]
 [ext_resource type="Material" uid="uid://b2yyd7iqbv2m3" path="res://material/gravel.tres" id="11_ug0lm"]
@@ -7321,6 +7322,7 @@ script = ExtResource("4_ibr26")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 3.90806e-08, -1.45851e-07, 0, 0.965926, 0.258819, 1.50996e-07, 0.258819, -0.965926, 0, 0, 0)
+light_indirect_energy = 0.0
 light_volumetric_fog_energy = 2.5
 shadow_enabled = true
 
@@ -7454,6 +7456,9 @@ material = SubResource("StandardMaterial3D_lixah")
 
 [node name="fenceGate" parent="map" instance=ExtResource("17_fq0t2")]
 transform = Transform3D(-0.675, 0, -1.13247e-07, 0, 0.55, 0, 1.01922e-07, 0, -0.75, 3.1, 0.125, 14.365)
+
+[node name="OldElectricHangingLantern" parent="map" instance=ExtResource("8_lixah")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.83451, 0.278099, 8.42859)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gwi7c")
@@ -14488,6 +14493,28 @@ skeleton = NodePath("../../VoxelGI")
 
 [node name="Cop1" parent="enemies" instance=ExtResource("21_4cwjs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 77)
+
+[node name="negativeLighting" type="Node3D" parent="."]
+
+[node name="tunnel" type="OmniLight3D" parent="negativeLighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 37.9321)
+light_negative = true
+omni_attenuation = 0.0
+
+[node name="tunnel2" type="OmniLight3D" parent="negativeLighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 44.4909)
+light_negative = true
+omni_attenuation = 0.0
+
+[node name="tunnel3" type="OmniLight3D" parent="negativeLighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 50.7781)
+light_negative = true
+omni_attenuation = 0.0
+
+[node name="tunnel4" type="OmniLight3D" parent="negativeLighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 57.5388)
+light_negative = true
+omni_attenuation = 0.0
 
 [connection signal="canOpenDoors" from="." to="map/train" method="_on_train_1_can_open_doors"]
 [connection signal="animation_finished" from="mapEvent1" to="." method="_on_map_events_animation_finished"]
