@@ -7444,6 +7444,18 @@ transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 
 [node name="FluorescentLight2" parent="map/lights" instance=ExtResource("4_b6r2v")]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, -3.5, 1.695, 0.2)
 
+[node name="OldElectricHangingLantern" parent="map/lights" instance=ExtResource("8_lixah")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.875, 0.26, 8.45)
+
+[node name="OldElectricHangingLantern2" parent="map/lights" instance=ExtResource("8_lixah")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.875, 0.26, 9.85)
+
+[node name="OldElectricHangingLantern3" parent="map/lights" instance=ExtResource("8_lixah")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.875, 0.26, 11.25)
+
+[node name="OldElectricHangingLantern4" parent="map/lights" instance=ExtResource("8_lixah")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.875, 0.26, 12.65)
+
 [node name="CSGBox3D" type="CSGBox3D" parent="map"]
 transform = Transform3D(0.22, 0, 0, 0, -9.61651e-09, -0.22, 0, 0.22, -9.61651e-09, 13.225, 0.613838, 26.5557)
 size = Vector3(1, 6, 5.554)
@@ -7456,9 +7468,6 @@ material = SubResource("StandardMaterial3D_lixah")
 
 [node name="fenceGate" parent="map" instance=ExtResource("17_fq0t2")]
 transform = Transform3D(-0.675, 0, -1.13247e-07, 0, 0.55, 0, 1.01922e-07, 0, -0.75, 3.1, 0.125, 14.365)
-
-[node name="OldElectricHangingLantern" parent="map" instance=ExtResource("8_lixah")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.83451, 0.278099, 8.42859)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gwi7c")
@@ -14477,7 +14486,7 @@ libraries = {
 script = ExtResource("12_wu6q4")
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
-subdiv = 2
+subdiv = 3
 size = Vector3(400, 50, 250)
 data = ExtResource("17_7qlsd")
 
@@ -14493,28 +14502,6 @@ skeleton = NodePath("../../VoxelGI")
 
 [node name="Cop1" parent="enemies" instance=ExtResource("21_4cwjs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 77)
-
-[node name="negativeLighting" type="Node3D" parent="."]
-
-[node name="tunnel" type="OmniLight3D" parent="negativeLighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 37.9321)
-light_negative = true
-omni_attenuation = 0.0
-
-[node name="tunnel2" type="OmniLight3D" parent="negativeLighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 44.4909)
-light_negative = true
-omni_attenuation = 0.0
-
-[node name="tunnel3" type="OmniLight3D" parent="negativeLighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 50.7781)
-light_negative = true
-omni_attenuation = 0.0
-
-[node name="tunnel4" type="OmniLight3D" parent="negativeLighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 57.5388)
-light_negative = true
-omni_attenuation = 0.0
 
 [connection signal="canOpenDoors" from="." to="map/train" method="_on_train_1_can_open_doors"]
 [connection signal="animation_finished" from="mapEvent1" to="." method="_on_map_events_animation_finished"]
