@@ -1,5 +1,6 @@
 extends CharacterBody3D
 signal currentCameraTrue
+signal enteredAlleyWay
 @export var isInWakeUpAnim:bool
 @export var currentCamera:bool
 var speed
@@ -126,3 +127,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 		ouch.play()
 	if gasMaskIsOn == true:
 		pass
+
+
+func OnEnteredAlleyWay(area: Area3D) -> void:
+	emit_signal("enteredAlleyWay")
