@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cb61ca1bw0i0d"]
+[gd_scene load_steps=24 format=3 uid="uid://cb61ca1bw0i0d"]
 
 [ext_resource type="Script" uid="uid://bg8e6ty5swcr2" path="res://Scripts/Player.gd" id="1_7dds3"]
 [ext_resource type="Script" uid="uid://b1yap8mi3ce4e" path="res://Scripts/hitscan.gd" id="2_yi6jf"]
@@ -7,8 +7,9 @@
 [ext_resource type="FontFile" uid="uid://bpord7tngd6ty" path="res://fonts/trebuc.ttf" id="5_kthdm"]
 [ext_resource type="PackedScene" uid="uid://ereoj1rvnm27" path="res://Scenes/pauseMenu/pauseMenu.tscn" id="6_0n0k8"]
 [ext_resource type="PackedScene" uid="uid://cmedcbffhrt0x" path="res://Scenes/player/gasMask/gasMask.tscn" id="7_8b4gk"]
+[ext_resource type="Shader" uid="uid://dvlh70qw1qoxe" path="res://shaders/SpatialOutline.gdshader" id="7_t3oqc"]
 [ext_resource type="AudioStream" uid="uid://j84a6liwarg5" path="res://sound/sfx/ouch.ogg" id="8_3jkfm"]
-[ext_resource type="Material" uid="uid://ca412dqonmf1t" path="res://Materials/sobelEffect.tres" id="9_n1x3k"]
+[ext_resource type="Shader" uid="uid://c5pnpuwn8mgij" path="res://shaders/sobel.gdshader" id="9_t3oqc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5axu"]
 
@@ -30,9 +31,23 @@ font = ExtResource("5_kthdm")
 font_size = 100
 font_color = Color(0, 1, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uawwb"]
+render_priority = 0
+shader = ExtResource("7_t3oqc")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 1.0
+shader_parameter/highlight_strength = 1.0
+shader_parameter/highlight_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/is_perspective_camera = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_xxxpe"]
-material = ExtResource("9_n1x3k")
-size = Vector3(2, 2, 1)
+material = SubResource("ShaderMaterial_uawwb")
+size = Vector3(5, 3, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8lfk"]
+shader = ExtResource("9_t3oqc")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wydro"]
 
@@ -233,10 +248,27 @@ text = "off"
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Head/Camera3D"]
 process_physics_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+visible = false
+mesh = SubResource("BoxMesh_xxxpe")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Head/Camera3D"]
+process_physics_priority = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 mesh = SubResource("BoxMesh_xxxpe")
 
 [node name="GasMask" parent="Head/Camera3D" instance=ExtResource("7_8b4gk")]
 transform = Transform3D(-6, 0, 4.37114e-07, 0, 5, 0, -5.24537e-07, 0, -5, 0, -1, 0.81828)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Head"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Head/CanvasLayer"]
+material = SubResource("ShaderMaterial_p8lfk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="playerCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

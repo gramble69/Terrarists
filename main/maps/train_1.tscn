@@ -1,4 +1,4 @@
-[gd_scene load_steps=3531 format=4 uid="uid://56od2ujjabcw"]
+[gd_scene load_steps=3530 format=4 uid="uid://56od2ujjabcw"]
 
 [ext_resource type="PackedScene" uid="uid://dkb8idyuppfg6" path="res://train.tscn" id="1_7sb30"]
 [ext_resource type="PackedScene" uid="uid://coad3sh2mgsyv" path="res://communityAssets/train_station/edited/trainStation.tscn" id="2_hs67r"]
@@ -33,10 +33,8 @@ size = Vector3(0.01, 0.75, 0.75)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgm07"]
 size = Vector3(1.85666, 0.459442, 0.025)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lixah"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_lixah"]
-size = Vector3(41.201, 2.745, 24.8405)
+size = Vector3(75, 2.745, 24.85)
 
 [sub_resource type="Environment" id="Environment_gwi7c"]
 background_mode = 2
@@ -10965,11 +10963,6 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.875, 0.26, 11.25)
 [node name="OldElectricHangingLantern4" parent="map/lights" instance=ExtResource("8_lixah")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.875, 0.26, 12.65)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="map"]
-transform = Transform3D(-9.61651e-09, 0.22, -9.61651e-09, 0, -9.61651e-09, -0.22, -0.22, -9.61651e-09, 4.20351e-16, 13.9, 0.615, 37.048)
-size = Vector3(1, 6, 5.554)
-material = SubResource("StandardMaterial3D_lixah")
-
 [node name="fenceGate" parent="map" instance=ExtResource("17_fq0t2")]
 transform = Transform3D(-0.675, 0, -1.13247e-07, 0, 0.55, 0, 1.01922e-07, 0, -0.75, 3.1, 0.125, 14.365)
 
@@ -10978,7 +10971,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.1)
 script = ExtResource("9_5cg6j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="map/alleyWayChaseScene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1004, 1.2921, 9.83976)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8296, 1.2921, 9.83976)
 shape = SubResource("BoxShape3D_lixah")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="map/alleyWayChaseScene"]
@@ -10990,11 +10983,6 @@ environment = SubResource("Environment_gwi7c")
 [node name="FogVolume" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.174, 10, 2.25)
 size = Vector3(50, 20, 50)
-material = SubResource("FogMaterial_uixbb")
-
-[node name="FogVolume4" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.7836, 7.21899, 164.763)
-size = Vector3(16.0376, 25.562, 20.2236)
 material = SubResource("FogMaterial_uixbb")
 
 [node name="FogVolume2" type="FogVolume" parent="."]
