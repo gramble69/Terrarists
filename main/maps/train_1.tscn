@@ -11,9 +11,9 @@
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="8_kjk7v"]
 [ext_resource type="PackedScene" uid="uid://j22fn4a0ehft" path="res://Scenes/oldElectricHangingLantern/oldElectricHangingLantern.tscn" id="8_lixah"]
 [ext_resource type="Script" uid="uid://doldf6dufx4xj" path="res://Scripts/YourNotSupposedToBeHere.gd" id="9_5cg6j"]
+[ext_resource type="AudioStream" uid="uid://dqcm7t0s2kfd3" path="res://sound/music/TerraristsYourNotSupposedToBeHereFinalWithDrums.mp3" id="9_e7eou"]
 [ext_resource type="Material" uid="uid://uqjaj2arp1i1" path="res://material/gunmetal.tres" id="9_lefoa"]
 [ext_resource type="Material" uid="uid://h6iexif07p8o" path="res://material/concrete.tres" id="10_5q5q4"]
-[ext_resource type="AudioStream" uid="uid://c21hylck8nrh4" path="res://sound/music/TerraristsYourNotSupposedToBeHereWithSynth.mp3" id="10_mluaa"]
 [ext_resource type="Material" uid="uid://b2yyd7iqbv2m3" path="res://material/gravel.tres" id="11_ug0lm"]
 [ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="12_f1kx8"]
 [ext_resource type="Script" uid="uid://bppkfovmx1yvh" path="res://Scripts/train_1anim.gd" id="12_wu6q4"]
@@ -10975,7 +10975,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8296, 1.2921, 9.83976)
 shape = SubResource("BoxShape3D_lixah")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="map/alleyWayChaseScene"]
-stream = ExtResource("10_mluaa")
+stream = ExtResource("9_e7eou")
+
+[node name="Timer" type="Timer" parent="map/alleyWayChaseScene"]
+wait_time = 3.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gwi7c")
@@ -21522,5 +21525,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0,
 
 [connection signal="canOpenDoors" from="." to="map/train" method="_on_train_1_can_open_doors"]
 [connection signal="area_entered" from="map/alleyWayChaseScene" to="Player" method="OnEnteredAlleyWay"]
+[connection signal="timeout" from="map/alleyWayChaseScene/Timer" to="map/alleyWayChaseScene" method="_on_timer_timeout"]
 [connection signal="enteredAlleyWay" from="Player" to="map/alleyWayChaseScene" method="_on_player_entered_alley_way"]
 [connection signal="animation_finished" from="mapEvent1" to="." method="_on_map_events_animation_finished"]

@@ -31,7 +31,7 @@ DSP/dsp_buffer_count=4
 config/name="terrarists"
 config/version="0.4"
 run/main_scene="res://maps/titleScreens/titleScreen1.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.png"
 
 [autoload]
