@@ -2,7 +2,7 @@ extends Area3D
 
 @onready var delay = $Timer
 @onready var yourNotSupposedToBeHere = $AudioStreamPlayer
-
+@onready var chaseAnim = $AnimationPlayer
 var delayStarted
 
 func _on_player_entered_alley_way() -> void:
@@ -20,3 +20,4 @@ func _on_player_entered_alley_way() -> void:
 func _on_timer_timeout() -> void:
 	print("delayFinished")
 	yourNotSupposedToBeHere.play(0.0)
+	chaseAnim.play("Chase")

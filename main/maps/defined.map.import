@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://uhkvrnwilt0o"
+path="res://.godot/imported/defined.map-c3540e43ecd60e0337a4003459de3ec6.tres"
+
+[deps]
+
+source_file="res://maps/defined.map"
+dest_files=["res://.godot/imported/defined.map-c3540e43ecd60e0337a4003459de3ec6.tres"]
+
+[params]
+

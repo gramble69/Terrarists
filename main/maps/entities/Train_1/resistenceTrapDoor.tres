@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=2 format=3 uid="uid://bqfb312iyhvim"]
+
+[ext_resource type="Script" uid="uid://de8b4ctep4ilf" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_ynlfi"]
+
+[resource]
+script = ExtResource("1_ynlfi")
+build_occlusion = true
+classname = "resistenceTrapDoor"
+description = "A trapDoor that captures you in Train_1 so that the resistence can tell you that your the hero in the prophecy."
+metadata/_custom_type_script = "uid://de8b4ctep4ilf"

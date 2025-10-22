@@ -129,10 +129,12 @@ shadow_mesh = SubResource("ArrayMesh_jjyrb")
 
 [node name="hd" type="MeshInstance3D" parent="gasmask"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.60602e-05, 0.0588118, 0.10641)
+gi_mode = 2
 mesh = SubResource("ArrayMesh_mjgaq")
 skeleton = NodePath("")
 
 [node name="fo" type="MeshInstance3D" parent="gasmask"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000667218, 0.117916, 0.217161)
+gi_mode = 2
 mesh = SubResource("ArrayMesh_3s1m3")
 skeleton = NodePath("")
