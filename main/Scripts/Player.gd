@@ -10,6 +10,7 @@ var gasMaskIsOn = false
 var CROUCH_SPEED = WALK_SPEED / 2
 @export var JUMP_VELOCITY = 4.8 
 var SENSITIVITY = 0.004
+var isSwimming: bool
 
 #bob variables
 var BOB_FREQ = 2.4 / 2
@@ -33,7 +34,7 @@ var gravity = 9.8
 @onready var ammoLabel = $Head/Camera3D/spareAmmoSeperater
 @onready var anim = $AnimationPlayer
 @onready var ouch = $AudioListener3D/AudioStreamPlayer3D
-
+@onready var toBeContinued = $Control
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -62,11 +63,15 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta):
 	# Add the gravity.
+	if isSwimming == true:
+		gravity = gravity/4
+	if isSwimming == false: gravity = gravity
+	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and isSwimming == false:
 		velocity.y = JUMP_VELOCITY
 	
 	# Handle Sprint.
@@ -131,3 +136,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 
 func OnEnteredAlleyWay(area: Area3D) -> void:
 	emit_signal("enteredAlleyWay")
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	toBeContinued.visible = true

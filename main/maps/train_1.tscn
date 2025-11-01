@@ -1,4 +1,4 @@
-[gd_scene load_steps=3542 format=4 uid="uid://56od2ujjabcw"]
+[gd_scene load_steps=3545 format=4 uid="uid://56od2ujjabcw"]
 
 [ext_resource type="PackedScene" uid="uid://dkb8idyuppfg6" path="res://train.tscn" id="1_7sb30"]
 [ext_resource type="PackedScene" uid="uid://coad3sh2mgsyv" path="res://communityAssets/train_station/edited/trainStation.tscn" id="2_hs67r"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://qndnryxtj0an" path="res://communityAssets/wireFence/better/fenceGate.tscn" id="17_fq0t2"]
 [ext_resource type="NavigationMesh" uid="uid://btdgexhko24ya" path="res://pathfindingMaps/train_1.tres" id="20_wr01w"]
 [ext_resource type="PackedScene" uid="uid://bihvnghsar34x" path="res://Scenes/enemy/cop1.tscn" id="21_4cwjs"]
+[ext_resource type="FontFile" uid="uid://bpord7tngd6ty" path="res://fonts/trebuc.ttf" id="24_5cg6j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0on7"]
 size = Vector3(12.5, 0.5, 0.01)
@@ -10889,6 +10890,15 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AABsQgAAWEEAALNCAABsQgAAAAAAALNCAABwQgAAAAAAALNCAABwQgAAWEEAALNCAABsQgAAWEEAALNCAABsQgAAWEEAAOlCAABsQgAAAAAAAOlCAABsQgAAAAAAALNCAABwQgAAAAAAALNCAABsQgAAAAAAALNCAABsQgAAAAAAAOlCAABwQgAAAAAAAOlCAABwQgAAWEEAALNCAABwQgAAWEEAAOlCAABsQgAAWEEAAOlCAABsQgAAWEEAALNCAABwQgAAWEEAALNCAABwQgAAAAAAALNCAABwQgAAAAAAAOlCAABwQgAAWEEAAOlCAABsQgAAWEEAAOlCAABwQgAAWEEAAOlCAABwQgAAAAAAAOlCAABsQgAAAAAAAOlCAACAQgAAWEEAALNCAACAQgAAAAAAALNCAACCQgAAAAAAALNCAACCQgAAWEEAALNCAACAQgAAWEEAALNCAACAQgAAWEEAAOlCAACAQgAAAAAAAOlCAACAQgAAAAAAALNCAACCQgAAAAAAALNCAACAQgAAAAAAALNCAACAQgAAAAAAAOlCAACCQgAAAAAAAOlCAACCQgAAWEEAALNCAACCQgAAWEEAAOlCAACAQgAAWEEAAOlCAACAQgAAWEEAALNCAACCQgAAWEEAALNCAACCQgAAAAAAALNCAACCQgAAAAAAAOlCAACCQgAAWEEAAOlCAACAQgAAWEEAAOlCAACCQgAAWEEAAOlCAACCQgAAAAAAAOlCAACAQgAAAAAAAOlC/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+//////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
 }]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cg6j"]
+albedo_color = Color(0, 6.34502, 0, 1)
+backlight = Color(1, 1, 1, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_mluaa"]
+material = SubResource("StandardMaterial3D_5cg6j")
+text = "To Be Continued"
+font = ExtResource("24_5cg6j")
+
 [node name="Train1" type="Node3D"]
 script = ExtResource("4_ibr26")
 
@@ -21622,6 +21632,13 @@ skeleton = NodePath("../../VoxelGI")
 
 [node name="Cop1" parent="enemies" instance=ExtResource("21_4cwjs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 77)
+
+[node name="toBeContinued" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 285.5, -2.5, 118)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="toBeContinued"]
+transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, -1.5, -35, 0)
+mesh = SubResource("TextMesh_mluaa")
 
 [connection signal="canOpenDoors" from="." to="map/train" method="_on_train_1_can_open_doors"]
 [connection signal="area_entered" from="map/alleyWayChaseScene" to="Player" method="OnEnteredAlleyWay"]
