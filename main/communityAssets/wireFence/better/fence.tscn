@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://dvl2scb5oecps"]
+[gd_scene load_steps=6 format=4 uid="uid://dvl2scb5oecps"]
 
 [ext_resource type="Texture2D" uid="uid://sxg2jgcr702h" path="res://communityAssets/wireFence/FENCE.png" id="1_4wua8"]
-[ext_resource type="Script" uid="uid://chhhfn4ots1ep" path="res://Scripts/fence.gd" id="1_peirk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0aaj"]
 resource_name = "METAL"
@@ -74,7 +73,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uo4pf")
 
 [node name="Fence" type="Node3D"]
-script = ExtResource("1_peirk")
 
 [node name="FENCE" type="Node3D" parent="."]
 
