@@ -14,7 +14,7 @@ var isSwimming: bool
 
 #bob variables
 var BOB_FREQ = 2.4 / 2
-var BOB_AMP = 0.08 / 2
+var BOB_AMP = 0.25 / 2
 var t_bob = 0.0
 
 #fov variables
@@ -35,6 +35,7 @@ var gravity = 9.8
 @onready var anim = $AnimationPlayer
 @onready var ouch = $AudioListener3D/AudioStreamPlayer3D
 @onready var toBeContinued = $Control
+@onready var footStepSound = $footStep/AudioStreamPlayer3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -69,7 +70,7 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+	
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor() and isSwimming == false:
 		velocity.y = JUMP_VELOCITY
@@ -79,7 +80,7 @@ func _physics_process(delta):
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (head.transform.basis * transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -87,14 +88,16 @@ func _physics_process(delta):
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+			#$footStep/Timer.start()
 		else:
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
 			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+			#$footStep/Timer.start()
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 	
-
+	
 	
 	# FOV
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
@@ -108,8 +111,49 @@ func _physics_process(delta):
 		
 	if (Input.is_action_just_released("crouch")):
 		anim.play_backwards("crouch")
+	
+	#foot steps
+	if Input.is_action_just_pressed("up"):
+		$footStep/Timer.start()
+		footStepSound.play()
+		#print("making foot step sound")
+	if Input.is_action_just_released("up"):
+		$footStep/Timer.stop()
+		footStepSound.play()
+	
+	if Input.is_action_just_pressed("down"):
+		$footStep/Timer.start()
+		footStepSound.play()
+		#print("making foot step sound")
+	if Input.is_action_just_released("down"):
+		$footStep/Timer.stop()
+		footStepSound.play()
+	
+	if Input.is_action_just_pressed("right") && not Input.is_action_just_pressed("left"):
+		$footStep/Timer.start()
+		footStepSound.play()
+		#print("making foot step sound")
+	if Input.is_action_just_released("right") && not Input.is_action_just_pressed("left"):
+		$footStep/Timer.stop()
+		footStepSound.play()
+	
+	if Input.is_action_just_pressed("left") && not Input.is_action_just_pressed("right"):
+		$footStep/Timer.start()
+		footStepSound.play()
+		#print("making foot step sound")
+	if Input.is_action_just_released("left") && not Input.is_action_just_pressed("right"):
+		$footStep/Timer.stop()
+		footStepSound.play()
+	
+	# Head bob
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	camera.transform.origin = _headbob(t_bob)
 
-
+func _headbob(time) -> Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+	return pos
 
 
 func _on_handgun_area_area_entered(area: Area3D) -> void:
@@ -140,3 +184,7 @@ func OnEnteredAlleyWay(area: Area3D) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	toBeContinued.visible = true
+
+
+func onNextFootStep() -> void:
+	footStepSound.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cb61ca1bw0i0d"]
+[gd_scene load_steps=30 format=3 uid="uid://cb61ca1bw0i0d"]
 
 [ext_resource type="Script" uid="uid://bg8e6ty5swcr2" path="res://Scripts/Player.gd" id="1_7dds3"]
 [ext_resource type="Script" uid="uid://b1yap8mi3ce4e" path="res://Scripts/hitscan.gd" id="2_yi6jf"]
@@ -10,6 +10,11 @@
 [ext_resource type="Shader" uid="uid://dvlh70qw1qoxe" path="res://shaders/SpatialOutline.gdshader" id="7_t3oqc"]
 [ext_resource type="AudioStream" uid="uid://j84a6liwarg5" path="res://sound/sfx/ouch.ogg" id="8_3jkfm"]
 [ext_resource type="Shader" uid="uid://c5pnpuwn8mgij" path="res://shaders/sobel.gdshader" id="9_t3oqc"]
+[ext_resource type="AudioStream" uid="uid://dvp8uoadfikk6" path="res://sound/sfx/footsteps/footStep1.mp3" id="11_h0khc"]
+[ext_resource type="AudioStream" uid="uid://ddravpcjk11qi" path="res://sound/sfx/footsteps/footStep2.mp3" id="12_6vj4j"]
+[ext_resource type="AudioStream" uid="uid://cu3ohqf832pfq" path="res://sound/sfx/footsteps/footStep3.mp3" id="13_nyrd7"]
+[ext_resource type="AudioStream" uid="uid://fj3sivjv1sop" path="res://sound/sfx/footsteps/footStep4.mp3" id="14_ic3d6"]
+[ext_resource type="AudioStream" uid="uid://s2a2b38ckqmd" path="res://sound/sfx/footsteps/footStep5.mp3" id="15_spm8d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5axu"]
 
@@ -138,6 +143,14 @@ _data = {
 &"crouch": SubResource("Animation_tjnta")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t3oqc"]
+streams_count = 5
+stream_0/stream = ExtResource("11_h0khc")
+stream_1/stream = ExtResource("12_6vj4j")
+stream_2/stream = ExtResource("13_nyrd7")
+stream_3/stream = ExtResource("14_ic3d6")
+stream_4/stream = ExtResource("15_spm8d")
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_7dds3")
 WALK_SPEED = 10.0
@@ -162,7 +175,7 @@ script = ExtResource("2_yi6jf")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.5, -0.25, -1.59339)
 
 [node name="handgun" parent="Head/Camera3D/gunholder" instance=ExtResource("3_u8ojb")]
-transform = Transform3D(-0.25, 0, 6.33795e-07, 0, 0.25, 0, -6.33795e-07, 0, -0.25, 0, 0, 0)
+transform = Transform3D(-0.25, 0, 6.337954e-07, 0, 0.25, 0, -6.337954e-07, 0, -0.25, 0, 0, 0)
 
 [node name="magazineLabel" type="Label" parent="Head/Camera3D"]
 visible = false
@@ -293,6 +306,14 @@ current = true
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AudioListener3D"]
 stream = ExtResource("8_3jkfm")
 
+[node name="footStep" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="footStep"]
+stream = SubResource("AudioStreamRandomizer_t3oqc")
+
+[node name="Timer" type="Timer" parent="footStep"]
+
 [connection signal="currentCameraTrue" from="." to="Head/Camera3D" method="_on_player_current_camera_true"]
 [connection signal="gasMaskIsOff" from="Head/Camera3D" to="." method="_on_camera_3d_gas_mask_is_off"]
 [connection signal="gasMaskIsOn" from="Head/Camera3D" to="." method="_on_camera_3d_gas_mask_is_on"]
+[connection signal="timeout" from="footStep/Timer" to="." method="onNextFootStep"]
