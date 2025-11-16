@@ -129,22 +129,25 @@ func _physics_process(delta):
 		$footStep/Timer.stop()
 		footStepSound.play()
 	
-	if Input.is_action_just_pressed("right") && not Input.is_action_just_pressed("left"):
+	if Input.is_action_just_pressed("right"):
 		$footStep/Timer.start()
 		footStepSound.play()
 		#print("making foot step sound")
-	if Input.is_action_just_released("right") && not Input.is_action_just_pressed("left"):
+	if Input.is_action_just_released("right"):
 		$footStep/Timer.stop()
 		footStepSound.play()
 	
-	if Input.is_action_just_pressed("left") && not Input.is_action_just_pressed("right"):
+	if Input.is_action_just_pressed("left"):
 		$footStep/Timer.start()
 		footStepSound.play()
 		#print("making foot step sound")
-	if Input.is_action_just_released("left") && not Input.is_action_just_pressed("right"):
+	if Input.is_action_just_released("left"):
 		$footStep/Timer.stop()
 		footStepSound.play()
-	
+	if Input.is_action_pressed("left") && Input.is_action_pressed("right"):
+		$footStep/Timer.stop()
+	if Input.is_action_pressed("up") && Input.is_action_pressed("down"):
+		$footStep/Timer.stop()
 	# Head bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
@@ -187,4 +190,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 
 func onNextFootStep() -> void:
-	footStepSound.play()
+	if (is_on_floor()):
+		footStepSound.play()
+
+
+func Train1toDefinedMapChange(area: Area3D) -> void:
+	CurrentPlayerScene.currentPlayerInstance = self

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3545 format=4 uid="uid://56od2ujjabcw"]
+[gd_scene load_steps=3546 format=4 uid="uid://56od2ujjabcw"]
 
 [ext_resource type="PackedScene" uid="uid://dkb8idyuppfg6" path="res://train.tscn" id="1_7sb30"]
 [ext_resource type="PackedScene" uid="uid://coad3sh2mgsyv" path="res://communityAssets/train_station/edited/trainStation.tscn" id="2_hs67r"]
@@ -10899,6 +10899,9 @@ material = SubResource("StandardMaterial3D_5cg6j")
 text = "To Be Continued"
 font = ExtResource("24_5cg6j")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5cg6j"]
+size = Vector3(3, 5, 4)
+
 [node name="Train1" type="Node3D"]
 script = ExtResource("4_ibr26")
 
@@ -21618,13 +21621,23 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0,
 
 [node name="toBeContinued" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 285.5, -2.5, 118)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="toBeContinued"]
 transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, -1.5, -35, 0)
 mesh = SubResource("TextMesh_mluaa")
+
+[node name="mapChange" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 285.5, -5, 118)
+
+[node name="Area3D" type="Area3D" parent="mapChange"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mapChange/Area3D"]
+shape = SubResource("BoxShape3D_5cg6j")
 
 [connection signal="canOpenDoors" from="." to="map/train" method="_on_train_1_can_open_doors"]
 [connection signal="area_entered" from="map/alleyWayChaseScene" to="Player" method="OnEnteredAlleyWay"]
 [connection signal="timeout" from="map/alleyWayChaseScene/Timer" to="map/alleyWayChaseScene" method="_on_timer_timeout"]
 [connection signal="enteredAlleyWay" from="Player" to="map/alleyWayChaseScene" method="_on_player_entered_alley_way"]
 [connection signal="animation_finished" from="mapEvent1" to="." method="_on_map_events_animation_finished"]
+[connection signal="area_entered" from="mapChange/Area3D" to="Player" method="Train1toDefinedMapChange"]

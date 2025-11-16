@@ -37,6 +37,7 @@ config/icon="res://icon.png"
 [autoload]
 
 BMOD="*res://addons/bmod/autoloads/bmod/bmod.tscn"
+CurrentPlayerScene="*res://Scripts/globals/currentPlayerScene.gd"
 
 [display]
 
@@ -121,7 +122,6 @@ toggleGasMaskOn={
 [physics]
 
 common/physics_ticks_per_second=144
-3d/physics_engine="GodotPhysics3D"
 
 [rendering]
 

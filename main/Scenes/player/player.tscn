@@ -312,6 +312,7 @@ stream = ExtResource("8_3jkfm")
 stream = SubResource("AudioStreamRandomizer_t3oqc")
 
 [node name="Timer" type="Timer" parent="footStep"]
+wait_time = 0.5
 
 [connection signal="currentCameraTrue" from="." to="Head/Camera3D" method="_on_player_current_camera_true"]
 [connection signal="gasMaskIsOff" from="Head/Camera3D" to="." method="_on_camera_3d_gas_mask_is_off"]
