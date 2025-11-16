@@ -5,7 +5,6 @@ extends Camera3D
 @onready var gasMaskLabel = $VBoxContainer/gasMaskLabel
 signal gasMaskIsOn
 signal gasMaskIsOff
-var gasMaskOn = false
 var rayRange = 2000
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,15 +36,15 @@ func getCameraCollision():
 	else:
 		print("nothing")
 func gasMaskToggle():
-	if gasMaskOn == false:
+	if CurrentPlayerScene.gasMaskOn == false:
 		gasMask.visible = true
 		print("gas mask on")
-		gasMaskOn = true
-	if gasMaskOn == true:
+		CurrentPlayerScene.gasMaskOn = true
+	if CurrentPlayerScene.gasMaskOn == true:
 		gasMask.visible = false
 		print("gas mask off")
 		#gasMaskLabel.text = "off"
-		gasMaskOn = false
+		CurrentPlayerScene.gasMaskOn = false
 
 
 func _on_player_current_camera_true() -> void:

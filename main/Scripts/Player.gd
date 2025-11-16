@@ -4,7 +4,6 @@ signal enteredAlleyWay
 @export var isInWakeUpAnim:bool
 @export var currentCamera:bool
 var speed
-var gasMaskIsOn = false
 @export var WALK_SPEED = 5.0
 @export var SPRINT_SPEED = 8.0
 var CROUCH_SPEED = WALK_SPEED / 2
@@ -51,7 +50,7 @@ func _unhandled_input(event):
 		#gun_holder.rotate_y(-event.relative.x * SENSITIVITY)
 		
 func _process(delta: float) -> void:
-	if (handgun.isBiengHeld == true):
+	if (CurrentPlayerScene.isBiengHeld == true):
 		crosshair.visible = true
 		pistolMagazineLabel.visible = true
 		pistolAmmoLabel.visible = true
@@ -60,19 +59,20 @@ func _process(delta: float) -> void:
 	pistolAmmoLabel.text = str(handgun.spareAmmo)
 	if (currentCamera == true):
 		emit_signal("currentCameraTrue")
+	
 
 
 func _physics_process(delta):
 	# Add the gravity.
 	if isSwimming == true:
-		gravity = gravity/4
-	if isSwimming == false: gravity = gravity
+		gravity = 2.45
+	if isSwimming == false: gravity = 9.8
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and isSwimming == false:
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
 	# Handle Sprint.
@@ -161,23 +161,23 @@ func _headbob(time) -> Vector3:
 
 func _on_handgun_area_area_entered(area: Area3D) -> void:
 	get_parent().get_node("Map/handgun").queue_free()
-	handgun.isBiengHeld = true
+	CurrentPlayerScene.isBiengHeld = true
 
 
 
 
 func _on_camera_3d_gas_mask_is_on() -> void:
-	gasMaskIsOn = true
+	CurrentPlayerScene.gasMaskIsOn = true
 
 
 func _on_camera_3d_gas_mask_is_off() -> void:
-	gasMaskIsOn = false
+	CurrentPlayerScene.gasMaskIsOn = false
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	if gasMaskIsOn == false:
+	if CurrentPlayerScene.gasMaskIsOn == false:
 		ouch.play()
-	if gasMaskIsOn == true:
+	if CurrentPlayerScene.gasMaskIsOn == true:
 		pass
 
 
@@ -195,4 +195,13 @@ func onNextFootStep() -> void:
 
 
 func Train1toDefinedMapChange(area: Area3D) -> void:
-	CurrentPlayerScene.currentPlayerInstance = self
+	print("switching map")
+	get_tree().change_scene_to_file("res://maps/defined.tscn")
+
+
+func enteredEntrancePool(area: Area3D) -> void:
+	isSwimming = true
+
+
+func exitedEntrancePool(area: Area3D) -> void:
+	isSwimming = false

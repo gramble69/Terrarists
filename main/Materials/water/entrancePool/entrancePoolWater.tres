@@ -6,6 +6,7 @@ as_normal_map = true
 
 [resource]
 transparency = 1
+cull_mode = 2
 depth_draw_mode = 1
 albedo_color = Color(0, 0.69803923, 0.84313726, 0.49019608)
 roughness = 0.0
