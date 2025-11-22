@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq4bsr2xdiq2i"]
+
+[ext_resource type="PackedScene" uid="uid://cylb6asqukft6" path="res://Scenes/largeMonitor/largeMonitor.blend" id="1_p2pxc"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="largeMonitor" parent="." instance=ExtResource("1_p2pxc")]

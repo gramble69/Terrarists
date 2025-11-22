@@ -1,0 +1,70 @@
+{
+	"connections": [
+		{
+			"from": "japanese_glyphs2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@Node@817",
+	"node_position": {
+		"x": 0.0,
+		"y": 0.0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 638.851196289062,
+				"y": 126.968444824219
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1.0,
+					"b": 0.1015625,
+					"g": 0.1015625,
+					"r": 0.1015625,
+					"type": "Color"
+				},
+				"ao": 1.0,
+				"depth_scale": 0.5,
+				"emission_energy": 1.0,
+				"flags_transparent": true,
+				"metallic": 0.0,
+				"normal": 1.0,
+				"roughness": 0.75
+			},
+			"seed_int": 0,
+			"type": "material_dynamic"
+		},
+		{
+			"name": "japanese_glyphs2",
+			"node_position": {
+				"x": 135.71110534668,
+				"y": 130.350250244141
+			},
+			"parameters": {
+				"bevel": 0.01,
+				"char": 1.0,
+				"gs": 1.0,
+				"rad": 0.025,
+				"scale": 1.0,
+				"sys": 1
+			},
+			"seed_int": 0,
+			"type": "japanese_glyphs2"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}
