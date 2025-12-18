@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://du3y526rx1jdv"]
+
+[ext_resource type="PackedScene" uid="uid://bjxvh686pubix" path="res://Scenes/david/davidv2.blend" id="1_wa8e3"]
+
+[node name="David" type="Node3D"]
+
+[node name="davidv2" parent="." instance=ExtResource("1_wa8e3")]

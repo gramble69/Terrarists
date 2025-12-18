@@ -38,6 +38,7 @@ config/icon="res://icon.png"
 
 BMOD="*res://addons/bmod/autoloads/bmod/bmod.tscn"
 CurrentPlayerScene="*res://Scripts/globals/currentPlayerScene.gd"
+HumanizerGlobal="*res://addons/humanizer/scenes/humanizer_global.tscn"
 
 [display]
 
@@ -49,7 +50,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/bmod/plugin.cfg", "res://addons/func_godot/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/vertex_painter/plugin.cfg")
+enabled=PackedStringArray("res://addons/bmod/plugin.cfg", "res://addons/func_godot/plugin.cfg", "res://addons/humanizer/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/vertex_painter/plugin.cfg")
 
 [input]
 
